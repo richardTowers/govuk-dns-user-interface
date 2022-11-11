@@ -1,0 +1,4 @@
+--minimal
+--asset-pipeline=propshaft
+--javascript=esbuild
+--css=sass
