@@ -1,6 +1,9 @@
 <h1 class="govuk-heading-xl">Your GOV.UK Subdomains</h1>
+
+<% @domains.each do |domain| %>
+
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--m">coronavirus.data.gov.uk</caption>
+  <caption class="govuk-table__caption govuk-table__caption--m"><%= domain[:name] %></caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Type</th>
@@ -11,105 +14,23 @@
     </tr>
   </thead>
   <tbody class="govuk-table__body">
+    <% domain[:records].each do |record| %>
     <tr class="govuk-table__row">
-      <th class="govuk-table__cell">NS</th>
-      <td class="govuk-table__cell">coronavirus.data.gov.uk</td>
-      <td class="govuk-table__cell">ns1-04.azure-dns.com.</td>
-      <td class="govuk-table__cell">300</td>
-      <td class="govuk-table__cell"><button class="govuk-button govuk-button--secondary" data-module="govuk-button"
-          style="margin-bottom: 0;">✏️ Edit</button> <button class="govuk-button govuk-button--secondary"
-          data-module="govuk-button" style="margin-bottom: 0;">❌
-          Delete</button></td>
+      <th class="govuk-table__cell"><%= record[:type] %></th>
+      <td class="govuk-table__cell"><%= record[:host] %></td>
+      <td class="govuk-table__cell"><%= record[:value] %></td>
+      <td class="govuk-table__cell"><%= record[:ttl] %></td>
+      <td class="govuk-table__cell">
+        <button class="govuk-button govuk-button--secondary" data-module="govuk-button" style="margin-bottom: 0;">✏️ Edit</button>
+        <button class="govuk-button govuk-button--secondary" data-module="govuk-button" style="margin-bottom: 0;">❌ Delete</button>
+      </td>
     </tr>
-    <tr class="govuk-table__row">
-      <th class="govuk-table__cell">NS</th>
-      <td class="govuk-table__cell">coronavirus.data.gov.uk</td>
-      <td class="govuk-table__cell">ns2-04.azure-dns.net.</td>
-      <td class="govuk-table__cell">300</td>
-      <td class="govuk-table__cell"><button class="govuk-button govuk-button--secondary" data-module="govuk-button"
-          style="margin-bottom: 0;">✏️ Edit</button> <button class="govuk-button govuk-button--secondary"
-          data-module="govuk-button" style="margin-bottom: 0;">❌
-          Delete</button></td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th class="govuk-table__cell">NS</th>
-      <td class="govuk-table__cell">coronavirus.data.gov.uk</td>
-      <td class="govuk-table__cell">ns3-04.azure-dns.org.</td>
-      <td class="govuk-table__cell">300</td>
-      <td class="govuk-table__cell"><button class="govuk-button govuk-button--secondary" data-module="govuk-button"
-          style="margin-bottom: 0;">✏️ Edit</button> <button class="govuk-button govuk-button--secondary"
-          data-module="govuk-button" style="margin-bottom: 0;">❌
-          Delete</button></td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th class="govuk-table__cell">NS</th>
-      <td class="govuk-table__cell">coronavirus.data.gov.uk</td>
-      <td class="govuk-table__cell">ns4-04.azure-dns.info.</td>
-      <td class="govuk-table__cell">300</td>
-      <td class="govuk-table__cell"><button class="govuk-button govuk-button--secondary" data-module="govuk-button"
-          style="margin-bottom: 0;">✏️ Edit</button> <button class="govuk-button govuk-button--secondary"
-          data-module="govuk-button" style="margin-bottom: 0;">❌
-          Delete</button></td>
-    </tr>
+    <% end %>
   </tbody>
 </table>
+
 <div>
   <button class="govuk-button" data-module="govuk-button">Add record</button>
 </div>
-<table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--m">coronavirus-staging.data.gov.uk</caption>
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Type</th>
-      <th scope="col" class="govuk-table__header">Host</th>
-      <th scope="col" class="govuk-table__header">Value</th>
-      <th scope="col" class="govuk-table__header">TTL</th>
-      <th scope="col" class="govuk-table__header">Controls</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <th class="govuk-table__cell">NS</th>
-      <td class="govuk-table__cell">coronavirus-staging.data.gov.uk</td>
-      <td class="govuk-table__cell">ns1-03.azure-dns.com.</td>
-      <td class="govuk-table__cell">300</td>
-      <td class="govuk-table__cell"><button class="govuk-button govuk-button--secondary" data-module="govuk-button"
-          style="margin-bottom: 0;">✏️ Edit</button> <button class="govuk-button govuk-button--secondary"
-          data-module="govuk-button" style="margin-bottom: 0;">❌
-          Delete</button></td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th class="govuk-table__cell">NS</th>
-      <td class="govuk-table__cell">coronavirus-staging.data.gov.uk</td>
-      <td class="govuk-table__cell">ns2-03.azure-dns.net.</td>
-      <td class="govuk-table__cell">300</td>
-      <td class="govuk-table__cell"><button class="govuk-button govuk-button--secondary" data-module="govuk-button"
-          style="margin-bottom: 0;">✏️ Edit</button> <button class="govuk-button govuk-button--secondary"
-          data-module="govuk-button" style="margin-bottom: 0;">❌
-          Delete</button></td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th class="govuk-table__cell">NS</th>
-      <td class="govuk-table__cell">coronavirus-staging.data.gov.uk</td>
-      <td class="govuk-table__cell">ns3-03.azure-dns.org.</td>
-      <td class="govuk-table__cell">300</td>
-      <td class="govuk-table__cell"><button class="govuk-button govuk-button--secondary" data-module="govuk-button"
-          style="margin-bottom: 0;">✏️ Edit</button> <button class="govuk-button govuk-button--secondary"
-          data-module="govuk-button" style="margin-bottom: 0;">❌
-          Delete</button></td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th class="govuk-table__cell">NS</th>
-      <td class="govuk-table__cell">coronavirus-staging.data.gov.uk</td>
-      <td class="govuk-table__cell">ns4-03.azure-dns.info.</td>
-      <td class="govuk-table__cell">300</td>
-      <td class="govuk-table__cell"><button class="govuk-button govuk-button--secondary" data-module="govuk-button"
-          style="margin-bottom: 0;">✏️ Edit</button> <button class="govuk-button govuk-button--secondary"
-          data-module="govuk-button" style="margin-bottom: 0;">❌
-          Delete</button></td>
-    </tr>
-  </tbody>
-</table>
-<div>
-  <button class="govuk-button" data-module="govuk-button">Add record</button>
-</div>
+
+<% end %>
